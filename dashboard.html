@@ -1,194 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Dashboard</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mere Server | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
 
-  <link rel="stylesheet" href="css/main.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="css/leaflet.css">
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- wrapper -->
-<div class="wrapper">
+<div class="wrapper" id="app">
 
-  <div class="top-container">
-    <div class="row justify-content-end">
-      <div class="top-info col-auto">
-        <p>Lime: UserName, <a href="#" title="Exit" class="log-out">log out</a></p>
-        <span>Relationship Manager: Jon Doy (jd@support.com)</span>
-      </div>
+    <div id="dashboard-page">
+
+        <div class="top-container">
+            <div class="row justify-content-end">
+                <div class="top-info col-auto" v-cloak>
+                    <p>{{companyName}}: {{userName}}, <a href="login.html" title="Exit" class="log-out">log out</a></p>
+                    <p>{{relationshipManagerLabel}}: {{relationshipManager.name}} ({{relationshipManager.email}})</p>
+                    <span>{{managerLabel}}: {{manager.name}} ({{manager.email}})</span>
+                </div>
+            </div>
+            <nav class="navbar navbar-white navbar-light top-nav-bar col-auto">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="index.html" role="button"><i
+                                class="fas fa-long-arrow-alt-left"></i><span>Dashboard</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- Main content -->
+        <div class="content-align-2 pb-4" v-cloak>
+
+            <div class="row justify-content-between">
+
+                <div class="col-auto head-controls">
+                    <div class="row filter-controls-group">
+                        <div class="filter-combobox form-inline col-auto">
+                            <div class="row">
+                                <label class="col-auto" for="country-filter">Country:</label>
+                                <select class="form-control col-auto select2" v-model="countriesSelector" id="country-filter">
+                                    <option v-for="country in countries">{{ country }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="filter-combobox form-inline col-auto">
+                            <div class="row">
+                                <label class="col-auto" for="city-filter">City:</label>
+                                <select class="form-control col-auto select2" v-model="citiesSelector" id="city-filter">
+                                    <option v-for="city in cities">{{ city }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-4 pb-2">
+
+                <div class="row dashboard-widgets justify-content-between pb-2">
+
+                    <div class="col-md mb-2">
+                        <!-- small card -->
+                        <div class="small-box-mod">
+                            <div class="inner">
+                                <h3>Stations: {{stationsTotalNumber}}</h3>
+                                <p class="value">{{stationsOnlineNumber}}</p>
+                                <p class="bottom">ONLINE</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md mb-2">
+                        <!-- small card -->
+                        <div class="small-box-mod">
+                            <div class="inner">
+                                <h3>Slots: {{slotsNumber}}</h3>
+                                <p class="value">{{slotsAvailableNumber}}</p>
+                                <p class="bottom">{{slotsLabel}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md mb-2">
+                        <!-- small card -->
+                        <div class="small-box-mod">
+                            <div class="inner">
+                                <h3>Scooters: {{scootersNumber}}</h3>
+                                <p class="value">{{scootersChargingNumber}}</p>
+                                <p class="bottom">ON CHARGE</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md mb-2">
+                        <!-- small card -->
+                        <div class="small-box-mod">
+                            <div class="inner">
+                                <h3>Balance</h3>
+                                <p class="value">{{balance}} {{balanceCurrency}}</p>
+                                <p class="bottom">END 24/06/20</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--          <div class="col-md mb-2">-->
+                    <!--            &lt;!&ndash; small card &ndash;&gt;-->
+                    <!--            <div class="small-box-mod">-->
+                    <!--              <div class="inner">-->
+                    <!--                <h3>Energy consumption</h3>-->
+                    <!--                <p class="value">{{power}} kWh</p>-->
+                    <!--                <p class="bottom">PER MONTH</p>-->
+                    <!--              </div>-->
+                    <!--            </div>-->
+                    <!--          </div>-->
+
+                </div>
+
+                <!--  Charts  -->
+                <!--        <div class="row">-->
+                <!--          <div class="col-md-6">-->
+
+                <!--            &lt;!&ndash; Line chart &ndash;&gt;-->
+                <!--            <div class="card card-outline no-shadow">-->
+                <!--              <div class="card-header no-border">-->
+                <!--                <h3 class="card-title">-->
+                <!--                  <i class="far fa-chart-bar"></i>-->
+                <!--                  Power / Time 24h-->
+                <!--                </h3>-->
+
+                <!--              </div>-->
+                <!--              <div class="card-body">-->
+                <!--                <div id="power-chart"></div>-->
+                <!--              </div>-->
+                <!--              &lt;!&ndash; /.card-body&ndash;&gt;-->
+                <!--            </div>-->
+                <!--            &lt;!&ndash; /.card &ndash;&gt;-->
+                <!--          </div>-->
+
+                <!--          <div class="col-md-6">-->
+                <!--            &lt;!&ndash; Bar chart &ndash;&gt;-->
+                <!--            <div class="card card-outline no-shadow">-->
+                <!--              <div class="card-header no-border">-->
+                <!--                <h3 class="card-title">-->
+                <!--                  <i class="far fa-chart-bar"></i>-->
+                <!--                  Monthly Expenses-->
+                <!--                </h3>-->
+
+                <!--              </div>-->
+                <!--              <div class="card-body">-->
+                <!--                <div id="moneys-chart"></div>-->
+                <!--              </div>-->
+                <!--              &lt;!&ndash; /.card-body&ndash;&gt;-->
+                <!--            </div>-->
+
+                <!--          </div>-->
+                <!--        </div>-->
+
+            </div>
+
+            <!-- Map  -->
+            <div class="row">
+
+              <div class="col-4">
+
+                    <p class="pl-10px head5">Popular Station</p>
+
+                    <div class="table-responsive dashboard-rating-table">
+                        <table class="table table-valign-middle text-left table-head-fixed font-size-14px no-first-border">
+<!--                            <thead>-->
+<!--                            <tr>-->
+<!--                                <th>№</th>-->
+<!--                                <th colspan="2">STATION LOCATION</th>-->
+<!--                            </tr>-->
+<!--                            </thead>-->
+                            <tbody>
+                            <tr v-for="(r, index) in stationsRatings">
+                                <td>{{index + 1}}</td>
+                                <td><a href="#" @click.click.prevent="SelLocation" :data-index="index">{{r.GetLocation.GetString}}</a></td>
+                            </tr>
+<!--                            <tr v-for="(r, index) in mapCities">-->
+<!--                                <td>{{index + 1}}</td>-->
+<!--                                <td>{{r.name}}</td>-->
+<!--                            </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+              <div class="col-8">
+
+                <div class="map-wrapper">
+                  <div id="map-container"></div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!--      <div class="map-wrapper">-->
+            <!--        <div id="map-container"></div>-->
+
+            <!--        <div class="city-selector-wrapper">-->
+
+            <!--          <div class="spinner text-center pb-3 " v-if="loading">-->
+            <!--            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>-->
+            <!--            <span class="sr-only">Loading...</span>-->
+            <!--          </div>-->
+
+            <!--          <div v-else v-cloak class="row justify-content-center">-->
+            <!--            <div class="city-selector-body">-->
+            <!--              <label>City:</label>-->
+            <!--              <select class="form-control" id="city-map-nav" v-model="mapCitySelector" >-->
+            <!--                <option v-for="city in mapCities">{{ city.name }}</option>-->
+            <!--              </select>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--        </div>-->
+            <!--      </div>-->
+
+        </div>
     </div>
-    <nav class="navbar navbar-white navbar-light top-nav-bar col-auto">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a href="index.html" role="button"><i class="fas fa-long-arrow-alt-left"></i><span>Dashboard</span></a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="content">
-
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row dashboard-widgets">
-          <div class="col-md-3 col-sm-6 col-12">
-            <!-- small card -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>1678 kWh</h3>
-                <p>Total power per Month</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-battery-three-quarters"></i>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-sm-6 col-12">
-            <!-- small card -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>20</h3>
-                <p>Scooters on charge</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-biking"></i>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 col-sm-6 col-12">
-            <!-- small card -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>100<sup style="font-size: 20px">$</sup><span style="font-size: 16px">till 24.05.2020</span></h3>
-                <p>Balance and prediction</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-wallet"></i>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-md-3 col-sm-6 col-12">
-            <!-- small card -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>12</h3>
-                <p><a href="#" class="small-box-footer text-light">Notification errors</a></p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-exclamation"></i>
-              </div>
-              </a>
-            </div>
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-
-            <!-- Line chart -->
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="far fa-chart-bar"></i>
-                  Power / Time 24h
-                </h3>
-
-              </div>
-              <div class="card-body">
-                <div id="power-chart"></div>
-              </div>
-              <!-- /.card-body-->
-            </div>
-            <!-- /.card -->
-          </div>
-
-          <div class="col-md-6">
-            <!-- Bar chart -->
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="far fa-chart-bar"></i>
-                  $ / Months
-                </h3>
-
-              </div>
-              <div class="card-body">
-                <div id="moneys-chart"></div>
-              </div>
-              <!-- /.card-body-->
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Map -->
-        <div class="map-wrapper">
-          <div id="map-container"></div>
-
-          <div class="vue city-selector-wrapper">
-
-            <div class="spinner text-center pb-3 " v-if="loading">
-              <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-              <span class="sr-only">Loading...</span>
-            </div>
-
-            <div v-else v-cloak class="row justify-content-center">
-              <div class="city-selector-body">
-                <label>City:</label>
-                <select class="form-control" id="city-map-nav" v-model="citiesSelector" >
-                  <option v-for="city in cities">{{ city.name }}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
     <!-- /.content -->
 
-  </div>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -198,10 +268,13 @@
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+    $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
+
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -227,17 +300,42 @@
 <script src="plugins/flot-old/jquery.flot.resize.min.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
 <script src="plugins/flot-old/jquery.flot.pie.min.js"></script>
+
+<script src="plugins/toastr/toastr.min.js"></script>
 <script src="js/leaflet.js"></script>
 <script src="js/Vue.js"></script>
 
 <script src="js/Exts.js"></script>
-<script src="js/components/CitiesAggregatorMV.js"></script>
-<script src="js/components/LoadingMV.js"></script>
+<script src="js/components/LoadingComponent.js"></script>
 
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="js/components/Models/City.js"></script>
+<script src="js/components/Models/CitiesModel.js"></script>
+<script src="js/components/CitiesComponent.js"></script>
 
-<script src="js/Graphics.js"></script>
+<script src="js/components/MapComponent.js"></script>
+<script src="js/components/HeaderInfo.js"></script>
+
+<script src="js/components/Models/CountriesModel.js"></script>
+<script src="js/components/Models/CountriesModel2.js"></script>
+<script src="js/components/CountriesComponent.js"></script>
+
+<script src="js/components/Models/DateRangePresetsModel.js"></script>
+<script src="js/components/DateRangeComponent.js"></script>
+
+<script src="js/components/StatusComponent.js"></script>
+
+<script src="js/components/Models/StationsRating.js"></script>
+<script src="js/components/Models/StationsRating2.js"></script>
+<script src="js/components/StationRatingComponent.js"></script>
+
+
+<script src="js/components/Models/Stations.js"></script>
+<script src="js/components/Models/Scooters.js"></script>
+<script src="js/components/Models/Powers.js"></script>
+<script src="js/components/Models/Balance.js"></script>
+
+<script src="js/components/DashboardComponent.js"></script>
+<script src="js/MainDashboard.js"></script>
 
 </body>
 </html>

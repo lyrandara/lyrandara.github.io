@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mere Server | Stations</title>
+  <title>Mere Server | Users</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -33,343 +33,162 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <link rel="stylesheet" href="css/main.css">
+
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- wrapper -->
-<div class="wrapper" id="app">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-    </ul>
+<div class="wrapper container-fluid" id="app">
 
-    <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" role="button" title="Exit">
-          <i class="fas fa-sign-out-alt"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/logos/uber.png" alt="My favorite Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Uber</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-          <li class="nav-header pl-lg-3">User</li>
-
-          <li class="nav-item">
-            <a href="dashboard.html" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="users.html" class="nav-link">
-              <i class="nav-icon fab fa-dev"></i>
-              <p>Stations</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="scooters.html" class="nav-link">
-              <i class="nav-icon fas fa-biking"></i>
-              <p>Scooters</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="history.html" class="nav-link">
-              <i class="nav-icon fas fa-history"></i>
-              <p>History</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="locations.html" class="nav-link">
-              <i class="nav-icon fas fa-map-marker"></i>
-              <p>Locations</p>
-            </a>
-          </li>
-
-          <li class="nav-header pl-lg-3">Admin</li>
-
-          <li class="nav-item">
-            <a href="users.html" class="nav-link active">
-              <i class="nav-icon fas fa-user"></i>
-              <p>Users</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="system-log.html" class="nav-link">
-              <i class="nav-icon fas fa-list"></i>
-              <p>System log</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="fw-update.html" class="nav-link">
-              <i class="nav-icon fas fa-wrench"></i>
-              <p>Fw update</p>
-            </a>
-          </li>
-
-          <li class="nav-item has-treeview "> <!-- menu-open -->
-            <a href="#" class="nav-link "> <!--active-->
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Settings
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="settings.html" class="nav-link "> <!--active-->
-                  <i class="far fa-circle nav-icon "></i>
-                  <p>Server settings</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
-
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Users</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-              <li class="breadcrumb-item active">Users</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
+  <div id="users-page" class="h-100">
     <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12">
+    <!-- /.card -->
+    <div class="card-container h-100">
 
-            <!-- /.card -->
-            <div class="card">
-              <div class="card-header border-0">
-                <!-- SEARCH FORM -->
-                <form class="card-title form-inline">
-                  <div class="input-group input-group-sm">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                      <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
+      <div class="spinner text-center pb-3 card-header" v-if="loading">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+      </div>
 
-                <!--<h3 class="card-title">Devices</h3>-->
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <!--<a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-bars"></i>
-                  </a>-->
+      <div v-else v-cloak class="h-100">
+
+        <div class="d-flex h-100 flex-column no-padding-rows">
+
+          <div class="row">
+            <div class="col top-container">
+              <div class="row justify-content-end">
+                <div class="top-info col-auto" v-cloak>
+                  <p>{{companyName}}: {{userName}}, <a href="login.html" title="Exit" class="log-out">log out</a></p>
+                  <p>{{relationshipManagerLabel}}: {{relationshipManager.name}} ({{relationshipManager.email}})</p>
+                  <span>{{managerLabel}}: {{manager.name}} ({{manager.email}})</span>
+                </div>
+              </div>
+              <nav class="navbar navbar-white navbar-light top-nav-bar col-auto">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a href="index-admin.html" role="button"><i class="fas fa-long-arrow-alt-left"></i><span>Users</span></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="spacer"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col content-align-1">
+              <!-- Call to action buttons -->
+              <ul class="list-inline pb-3 card-body">
+                <li class="list-inline-item">
+                  <button class="btn btn-primary rounded-0" type="button"
+                          data-placement="top" title="Add" data-toggle="modal" v-on:click="OnAddUser">
+                    <i class="fa fa-plus"></i></button>
+                </li>
+                <li class="list-inline-item">
+                  <button class="btn btn-success rounded-0" type="button" data-toggle="modal"
+                          data-placement="top" title="Edit" v-on:click="OnEditUser"><i class="fa fa-edit"></i></button>
+                </li>
+                <li class="list-inline-item">
+                  <button class="btn btn-danger rounded-0" type="button" data-toggle="tooltip"
+                          data-placement="top" title="Delete" v-on:click="OnDeleteUser"><i class="fa fa-trash" ></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row bg-1 flex-fill d-flex justify-content-start table-auto-rows">
+
+            <div class="col portlet-container portlet-dropzone content-align-1">
+
+              <div class="card-body">
+                <div class="table-responsive pt-27-px pb-27-px">
+                    <table class="table table-striped table-valign-middle text-center table-head-fixed text-nowrap users-table">
+                    <thead>
+                    <tr>
+                      <th>
+                        <div class="icheck-primary d-inline">
+                          <input v-model="usersAggregator.SelectAll" type="checkbox" id="users-checkboxes"/>
+                          <label for="users-checkboxes"></label>
+                        </div>
+                      </th>
+                      <th>№</th>
+                      <th>Name</th>
+                      <th>Logo</th>
+                      <th>Login</th>
+                      <th>Password</th>
+                      <th>Total scooters</th>
+                      <th>Role</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(u, index) in users">
+                      <td>
+                        <div class="icheck-primary d-inline">
+                          <input :data-index="index" type="checkbox" :id="'user-pr-'+(index+1)" v-model="u.selected" v-on:click="OnUsersAggregatorCheckClick($event)"/>
+                          <label :for="'user-pr-'+(index+1)"></label>
+                        </div>
+                      </td>
+                      <td>{{index+1}}</td>
+                      <td>{{u.name}}</td>
+                      <td>
+                        <div class="user-logo">
+                          <img :src="u.logo" :alt="'user-logo-'+(index+1)" class="rounded-circle" v-if="u.logo!=''"/>
+                          <i class="fas fa-user rounded-circle default-user-logo" v-else></i>
+                        </div>
+                      </td>
+                      <td>{{u.login}}</td>
+                      <td>{{u.Password}}</td>
+                      <td>{{u.totalScooters}}</td>
+                      <td>{{u.Role}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
 
-              <div class="spinner text-center pb-3 " v-if="loading">
-                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                <span class="sr-only">Loading...</span>
-              </div>
-
-              <div class="card-body table-responsive table-hover noselect" v-else v-cloak>
-
-                <!-- Call to action buttons -->
-                <ul class="list-inline m-0 pb-3">
-                  <li class="list-inline-item">
-                    <button class="btn btn-primary rounded-0" type="button"
-                            data-placement="top" title="Add" data-toggle="modal" v-on:click="OnAddUser">
-                      <i class="fa fa-plus"></i></button>
-                  </li>
-                  <li class="list-inline-item">
-                    <button class="btn btn-success rounded-0" type="button" data-toggle="modal"
-                            data-placement="top" title="Edit" v-on:click="OnEditUser"><i class="fa fa-edit"></i></button>
-                  </li>
-                  <li class="list-inline-item">
-                    <button class="btn btn-danger rounded-0" type="button" data-toggle="tooltip"
-                            data-placement="top" title="Delete" v-on:click="OnDeleteUser"><i class="fa fa-trash" ></i></button>
-                  </li>
-                </ul>
-
-                <table class="table table-striped table-valign-middle text-center">
-                  <thead>
-                  <tr>
-                    <th>
-                      <div class="icheck-primary d-inline">
-                        <input v-model="usersAggregator.SelectAll" type="checkbox" id="users-checkboxes"/>
-                        <label for="users-checkboxes"></label>
-                      </div>
-                    </th>
-                    <th>Number</th>
-                    <th>Name</th>
-                    <th>Logo</th>
-                    <th>Description</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-
-                  <tr v-for="(item, index) in users">
-                    <td>
-                      <div class="icheck-primary d-inline">
-                        <input :data-index="index" type="checkbox" :id="'user-pr-'+(index+1)" v-model="item.selected" v-on:click="OnUsersAggregatorCheckClick($event)"/>
-                        <label :for="'user-pr-'+(index+1)"></label>
-                      </div>
-                    </td>
-                    <td>{{index+1}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.logo}}</td>
-                    <td>{{item.description}}</td>
-                  </tr>
-
-                  </tbody>
-                </table>
-              </div>
-
             </div>
-
-
-            </div>
-            <!-- /.card -->
-
           </div>
+
+          <!-- Paginator -->
+          <div class="row auto-rows-footer">
+            <div class="col content-align-1 pb-4">
+
+              <div class="card-body pt-27-px">
+
+                <div class="row">
+
+                  <div class="col">
+
+                    <div class="row">
+                      <div class="col">
+                        <div class="paginator">
+                          <a href="#"><i class="fas fa-chevron-left" v-on:click.prevent="PrevPage"></i></a>
+                          <span>Page: {{pageNumber}} of {{pageMaxNumber}}</span>
+                          <a href="#"><i class="fas fa-chevron-right" v-on:click.prevent="NextPage"></i></a>
+                        </div>
+                      </div>
+                      <div class="col-auto">Total: {{usersTotal}}</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
         </div>
+
       </div>
     </div>
-
+    <!-- /.card -->
     <!-- /.content -->
+  </div>
 
   <!-- Modal -->
 
@@ -397,16 +216,59 @@
                      v-model="usersAggregator.defaultModel.name"/>
             </div>
 
+<!--        <div class="form-group">-->
+            <!--          <label for="userLogoInput">Logo</label>-->
+            <!--          <input type="text" class="form-control" id="userLogoInput" placeholder="Enter logo"-->
+            <!--                 v-model="usersAggregator.defaultModel.logo"/>
+            usersAggregator.defaultModel.logo = window.URL.createObjectURL($event.target.files[0])
+            -->
+            <!--        </div>-->
             <div class="form-group">
               <label for="userLogoInput">Logo</label>
-              <input type="text" class="form-control" id="userLogoInput" placeholder="Enter logo"
-                     v-model="usersAggregator.defaultModel.logo"/>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="userLogoInput" placeholder="Enter logo" @change="previewFiles(usersAggregator.defaultModel, $event)" multiple/>
+                  <label class="custom-file-label" for="userLogoInput">{{usersAggregator.defaultModel.logoName}}</label>
+                </div>
+<!--                <div class="input-group-append">-->
+<!--                  <span class="input-group-text" id="">Upload</span>-->
+<!--                </div>-->
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="userDescriptionInput">Description</label>
-              <input type="text" class="form-control" id="userDescriptionInput" placeholder="Enter description"
-                     v-model="usersAggregator.defaultModel.description"/>
+              <label for="userLoginInput">Login</label>
+              <input type="text" class="form-control" id="userLoginInput" placeholder="Enter login"
+                     v-model="usersAggregator.defaultModel.login"/>
+            </div>
+
+            <div class="form-group">
+              <label for="userPasswordInput">Password</label>
+              <input type="password" class="form-control" id="userPasswordInput" placeholder="Enter password"
+                     v-model="usersAggregator.defaultModel.Password"/>
+            </div>
+
+            <div class="form-group">
+              <label for="userTotalScootersInput">Total scooters</label>
+              <input type="text" class="form-control" id="userTotalScootersInput" placeholder="Enter total scooters"
+                     v-model="usersAggregator.defaultModel.totalScooters"/>
+            </div>
+
+<!--            <div class="form-group">-->
+<!--              <label for="userRoleInput">Role</label>-->
+<!--              <input type="text" class="form-control" id="userRoleInput" placeholder="Enter role"-->
+<!--                     v-model.lazy="usersAggregator.defaultModel.Role"/>-->
+<!--            </div>
+:checked="usersAggregator.defaultModel.Roles.indexOf(r) != -1"
+-->
+
+            <div class="form-group">
+              <label>Roles</label>
+              <div class="custom-control custom-checkbox" v-for="(r, key, index) in userRoles" :key="key">
+                <input class="custom-control-input" type="checkbox" :id="'role-'+(index+1)" :value="r" v-model="usersAggregator.defaultModel.Roles"
+                       :disabled="CheckIfAdmin(r, usersAggregator.defaultModel)"/>
+                <label :for="'role-'+(index+1)" class="custom-control-label">{{r}}</label>
+              </div>
             </div>
 
           </div>
@@ -429,14 +291,6 @@
 
   </div>
 
-
-</div>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -474,7 +328,8 @@
 <script src="dist/js/adminlte.js"></script>
 <!-- Toastr -->
 <script src="plugins/toastr/toastr.min.js"></script>
-
+<script src="js/leaflet.js"></script>
+<script src="js/moment.min.js"></script>
 
 <script src="js/Vue.js"></script>
 <script src="js/Exts.js"></script>
@@ -482,9 +337,34 @@
 <script src="js/Aggregator.js"></script>
 <script src="js/components/Models/Stations.js"></script>
 <script src="js/components/Models/Users.js"></script>
-<script src="js/components/LoadingMV.js"></script>
-<script src="js/components/StationsAggregatorMV.js"></script>
-<script src="js/components/UsersAggregatorMV.js"></script>
+<script src="js/components/LoadingComponent.js"></script>
+
+<script src="js/components/Models/City.js"></script>
+<script src="js/components/Models/CitiesModel.js"></script>
+<script src="js/components/CitiesComponent.js"></script>
+
+<script src="js/components/Models/CountriesModel.js"></script>
+<script src="js/components/CountriesComponent.js"></script>
+
+<script src="js/components/Models/StationStatusModel.js"></script>
+<script src="js/components/StatusComponent.js"></script>
+
+<script src="js/components/StationsComponent.js"></script>
+<script src="js/components/UsersComponent.js"></script>
+<script src="js/components/ResponsiveTable.js"></script>
+
+<script src="js/components/MonthComponent.js"></script>
+<script src="js/components/BillingComponent.js"></script>
+<script src="js/components/ResponsiveMessages.js"></script>
+<script src="js/components/PaginatorComponent.js"></script>
+<script src="js/components/AutoRowsTable.js"></script>
+
+<script src="js/components/Models/MessageModel.js"></script>
+<script src="js/components/Models/IncomingMessages.js"></script>
+<script src="js/components/MessagesComponent.js"></script>
+
+<script src="js/components/HeaderInfo.js"></script>
+
 <script src="js/Main.js"></script>
 
 </body>

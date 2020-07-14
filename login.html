@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mere | Log in</title>
+  <title>Mere Server | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,54 +20,42 @@
 
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <div class="login-logo">
-        <b>Mere</b>
+<body class="hold-transition">
+
+<div class="login-page" id="app">
+
+  <form action="index.html" method="post">
+
+    <div class="login-card-body">
+      <div class="filter-input form-inline col filter-controls-group filter-input-full row">
+        <label class="col-auto" for="login">Login:</label>
+        <input type="text" class="form-control col" id="login" @keyup.enter="enterKeyUp" v-model="login"/>
       </div>
-      <p class="login-box-msg">Log in to your account</p>
-
-      <form action="index.html" method="post">
-        <div class="input-group mb-3  input-bg">
-          <input type="text" class="form-control" placeholder="Login">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <i class="fas fa-sign-in-alt"></i>
-            </div>
-          </div>
+      <div class="filter-input form-inline col filter-controls-group filter-input-full row">
+        <label class="col-auto" for="password">Password:</label>
+        <input type="password" class="form-control col" id="password" @keyup.enter="enterKeyUp" v-model="password"/>
+      </div>
+      <div class="row justify-content-end">
+        <!-- /.col -->
+        <div class="col-5">
+          <a href="index.html" class="btn btn-block bg-gradient-success" ref="sendReply" @click.prevent="OnLogin">Log in</a>
         </div>
-        <div class="input-group mb-3  input-bg">
-          <input type="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row justify-content-md-center">
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-secondary btn-block">LOG IN</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-
+        <!-- /.col -->
+      </div>
     </div>
-    <!-- /.login-card-body -->
-  </div>
+
+  </form>
+
 </div>
-<!-- /.login-box -->
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+
+<script src="js/Vue.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/login.js"></script>
 
 </body>
 </html>
